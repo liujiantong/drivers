@@ -2,6 +2,7 @@
 
 ## 安装前提
 * 所有集群里的服务器都能访问 archive.cloudera.com
+* 修改每个节点上的/etc/hosts, 为集群中的每个节点添加主机名
 
 ## install mysql
 
@@ -165,3 +166,6 @@ systemctl enable cloudera-scm-server
 25. Enabling the Oozie Web Console
 - Download [ext-2.2](). Extract the contents of the file to /var/lib/oozie/ on the same host as the Oozie Server
 - Enable Oozie server web console in Cloudera Manager Admin Console
+
+25. cloudera manager 提示 DNS解析错误
+- hostnamectl set-hostname flume-node1

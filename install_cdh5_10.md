@@ -169,3 +169,7 @@ systemctl enable cloudera-scm-server
 
 25. cloudera manager 提示 DNS解析错误
 - hostnamectl set-hostname flume-node1
+
+26. Flume-ng, NoClassDefFoundError: org/apache/hive/hcatalog/streaming/RecordWriter
+- `HCAT_HOME=/opt/cloudera/parcels/CDH/lib/hive-hcatalog`
+- `HIVE_HOME=/opt/cloudera/parcels/CDH/lib/hive`

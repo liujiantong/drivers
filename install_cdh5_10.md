@@ -4,6 +4,21 @@
 * 所有集群里的服务器都能访问 archive.cloudera.com
 * 修改每个节点上的/etc/hosts, 为集群中的每个节点添加主机名
 
+### 安装时间服务
+```
+yum install ntp
+system enable ntpd
+system start ntpd
+```
+
+### 关闭防火墙
+```
+# 检查防火墙状态
+firewall-cmd --state
+systemctl stop firewalld
+systemctl disable firewalld
+```
+
 ## install mysql
 
 ### 在namenode1安装mysql
@@ -16,26 +31,40 @@
 
 ### 创建hadoop组件所需数据库
 ```
+drop database if exists cmf;
 create database cmf DEFAULT CHARACTER SET utf8;
 grant all on cmf.* TO 'cmf'@'%' IDENTIFIED BY 'cmf_password';
+grant all on cmf.* TO 'cmf'@'localhost' IDENTIFIED BY 'cmf_password';
 
+drop database if exists amon;
 create database amon DEFAULT CHARACTER SET utf8;
 grant all on amon.* TO 'amon'@'%' IDENTIFIED BY 'amon_password';
+grant all on amon.* TO 'amon'@'localhost' IDENTIFIED BY 'amon_password';
 
+drop database if exists rman;
 create database rman DEFAULT CHARACTER SET utf8;
 grant all on rman.* TO 'rman'@'%' IDENTIFIED BY 'rman_password';
+grant all on rman.* TO 'rman'@'localhost' IDENTIFIED BY 'rman_password';
 
+drop database if exists metastore;
 create database metastore DEFAULT CHARACTER SET utf8;
 grant all on metastore.* TO 'hive'@'%' IDENTIFIED BY 'hive_password';
+grant all on metastore.* TO 'hive'@'localhost' IDENTIFIED BY 'hive_password';
 
+drop database if exists nav;
 create database nav DEFAULT CHARACTER SET utf8;
 grant all on nav.* TO 'nav'@'%' IDENTIFIED BY 'nav_password';
+grant all on nav.* TO 'nav'@'localhost' IDENTIFIED BY 'nav_password';
 
+drop database if exists hue;
 create database hue DEFAULT CHARACTER SET utf8;
 grant all on hue.* TO 'hue'@'%' IDENTIFIED BY 'hue_password';
+grant all on hue.* TO 'hue'@'localhost' IDENTIFIED BY 'hue_password';
 
+drop database if exists oozie;
 create database oozie DEFAULT CHARACTER SET utf8;
 grant all on oozie.* TO 'oozie'@'%' IDENTIFIED BY 'oozie_password';
+grant all on oozie.* TO 'oozie'@'localhost' IDENTIFIED BY 'oozie_password';
 ```
 
 ### 设置 cloudera-scm-server 数据库

@@ -8,8 +8,8 @@
 ### 安装时间服务
 ```
 yum install ntp
-system enable ntpd
-system start ntpd
+systemctl enable ntpd
+systemctl start ntpd
 ```
 
 ### 关闭防火墙

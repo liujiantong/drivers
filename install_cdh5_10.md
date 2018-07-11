@@ -100,6 +100,7 @@ systemctl enable cloudera-scm-server
 ### Could not load requested class : com.mysql.jdbc.Driver
 
 - wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.41.tar.gz
+- mkdir -p /usr/share/java/
 - cp mysql-connector-java-5.1.41-bin.jar /usr/share/java/mysql-connector-java.jar
 - [ref here](https://www.cloudera.com/documentation/enterprise/latest/topics/cm_ig_mysql.html#cmig_topic_5_5_1)
 
